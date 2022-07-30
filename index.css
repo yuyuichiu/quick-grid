@@ -1,0 +1,57 @@
+.image-container {
+  position: relative;
+  margin: 1em;
+  margin-bottom: 5em;
+  width: fit-content;
+  /* background-color: #444; */
+}
+
+.image-container img {
+  margin: -1px;
+  max-width: 100%;
+  max-height: 100vh;
+  border: 2px solid #444;
+}
+
+/* Grid line stylings */
+.image-container.light-border .grid-line {
+  background-color: #eee;
+}
+
+.grid-line {
+  position: absolute;
+  background-color: #444;
+  z-index: 1000;
+}
+
+.grid-line.vertical {
+  height: 100%;
+  width: 0.5px;
+}
+
+.grid-line.horizontal {
+  height: 0.5px;
+  width: 100%;
+}
+
+#vertical {
+  left: 50%;
+}
+
+#horizontal {
+  top: 50%;
+}
+
+/* 3x3 handler */
+.image-container.grid9 #vertical {
+  left: 33.33%;
+}
+.image-container.grid9 #vertical2 {
+  left: 66.67%;
+}
+.image-container.grid9 #horizontal {
+  top: 33.33%;
+}
+.image-container.grid9 #horizontal2 {
+  top: 66.67%;
+}

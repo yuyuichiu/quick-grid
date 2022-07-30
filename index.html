@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <link href="./index.css" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌪️</text></svg>">
+  <title>Quick Grid</title>
+</head>
+<body>
+  <div class="container">
+    <div id='head' class="border m-2">
+      <h1 class="text-center fw-bold my-2">Quick Grid</h1>
+      <p class="text-center">Easily apply grid lines to your photo!</p>
+    </div>
+
+    <form id="upload" doctype="multipart/form">
+      <label for="file">Upload photo</label>
+      <input id='file' type="file" accept='image/*' required capture="environment" class="form-control" />
+
+      <button class="btn btn-outline-dark my-2 px-3">Render</button>
+    </form>
+    <hr>
+    <h2 class='fw-bold text-center' style="font-size:20px;">Config</h2>
+    <label class="form-check-label">
+      <input id='white_border' class="form-check-input" type="checkbox">
+      &nbsp; Light Border Color &nbsp;
+    </label>
+
+    <label class="form-check-label">
+      <input id='3x3' class="form-check-input" type="checkbox">
+      &nbsp; 3*3
+    </label>
+
+    <div class="image-container">
+      <div id="vertical" class="grid-line vertical"></div>
+      <div id="vertical2" class="grid-line vertical"></div>
+
+      <div id="horizontal" class="grid-line horizontal"></div>
+      <div id="horizontal2" class="grid-line horizontal"></div>
+
+      <img id="user_image" src="default.png" alt='user_image' />
+    </div>
+
+    <footer>
+      <p class="text-center m-2 text-secondary">Created and maintained by Dave Yu, copyright reserved</p>
+    </footer>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>
