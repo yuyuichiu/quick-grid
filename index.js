@@ -10,7 +10,7 @@ function handleImageUpload(event) {
 document.getElementById('upload').addEventListener('submit', handleImageUpload)
 
 // adjust border color
-.addEventListener('change', () => {
+document.getElementById('white_border').addEventListener('change', () => {
   imageContainer.classList.toggle('light-border');
 })
 
