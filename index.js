@@ -18,3 +18,7 @@ document.getElementById('white_border').addEventListener('change', () => {
 document.getElementById('3x3').addEventListener('change', () => {
   imageContainer.classList.toggle('grid9');
 })
+
+// Initial actions
+document.getElementById('white_border').selected = false;
+document.getElementById('3x3').selected = false;
