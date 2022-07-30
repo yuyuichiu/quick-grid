@@ -10,7 +10,7 @@ function handleImageUpload(event) {
 document.getElementById('upload').addEventListener('submit', handleImageUpload)
 
 // adjust border color
-document.getElementById('white_border').addEventListener('change', () => {
+.addEventListener('change', () => {
   imageContainer.classList.toggle('light-border');
 })
 
@@ -20,5 +20,5 @@ document.getElementById('3x3').addEventListener('change', () => {
 })
 
 // Initial actions
-document.getElementById('white_border').selected = false;
-document.getElementById('3x3').selected = false;
+document.getElementById('white_border').checked = false;
+document.getElementById('3x3').checked = false;
