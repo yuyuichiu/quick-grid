@@ -39,16 +39,22 @@
   top: 50%;
 }
 
+#vertical2, #horizontal2 {
+  display: none;
+}
+
 /* 3x3 handler */
 .image-container.grid9 #vertical {
   left: 33.33%;
 }
 .image-container.grid9 #vertical2 {
+  display: block;
   left: 66.67%;
 }
 .image-container.grid9 #horizontal {
   top: 33.33%;
 }
 .image-container.grid9 #horizontal2 {
+  display: block;
   top: 66.67%;
 }
