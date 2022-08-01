@@ -42,14 +42,21 @@
       <div id="horizontal" class="grid-line horizontal"></div>
       <div id="horizontal2" class="grid-line horizontal"></div>
 
-      <img id="user_image" src="default.png" alt='user_image' />
+      <img id="user_image" src="default.jpg" alt='user_image' />
     </div>
+
+    <div class="d-flex justify-content-center">
+      <button id='download' class="m-2 btn btn-primary" style="display: none">Export Screenshot</button>
+    </div>
+
+    <div id="out"></div>
 
     <footer>
       <p class="text-center m-2 text-secondary">Created and maintained by Dave Yu, copyright reserved</p>
     </footer>
   </div>
 
+  <script src="./html2canvas.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>

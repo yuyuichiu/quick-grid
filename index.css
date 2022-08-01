@@ -1,7 +1,6 @@
 .image-container {
   position: relative;
   margin: 1em;
-  margin-bottom: 5em;
   width: fit-content;
 }
 
@@ -57,4 +56,9 @@
 .image-container.grid9 #horizontal2 {
   display: block;
   top: 66.67%;
+}
+
+#out {
+  position: absolute;
+  right: 5000px;
 }
