@@ -1,7 +1,6 @@
 import { resetConfig, drawGridToCanvas, downloadCanvasImage, updateCanvasBaseImage } from './util.js';
 
 const canvas = document.querySelector('canvas');
-const context = canvas.getContext("2d");
 const imageContainer = document.querySelector('.image-container');
 const userImage = document.getElementById('user_image');
 const rawImage = new Image();
@@ -10,13 +9,20 @@ const rawImage = new Image();
 
 function handleImageUpload(event) {
   event.preventDefault();
-  const [file] = document.getElementById('file').files;
-  userImage.src = URL.createObjectURL(file);
-  rawImage.src = URL.createObjectURL(file);
+  if (document.getElementById('file').files.length < 1) { return document.getElementById('file').focus() }
 
-  rawImage.onload = function () {
-    updateCanvasBaseImage(canvas, rawImage);
-    document.getElementById('download').style.display = 'block';
+  document.getElementById('download').style.display = 'none';
+  const [file] = document.getElementById('file').files;
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function (e) {
+    userImage.src = e.target.result;
+    rawImage.src = e.target.result;
+
+    rawImage.onload = function () {
+      updateCanvasBaseImage(canvas, rawImage);
+      document.getElementById('download').style.display = 'block';
+    }
   }
 }
 

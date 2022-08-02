@@ -23,9 +23,9 @@ export function updateCanvasBaseImage(canvas, newImage) {
  * @param {String} filename - custom name of downloaded file, suffix is optional
  */
 export function downloadCanvasImage(canvas, filename) {
-  let outputDataURL = canvas.toDataURL('image/png');
+  let outputDataURL = canvas.toDataURL('image/jpeg', 0.8);
   let a = document.createElement('a');
-  a.setAttribute('download', filename);
+  a.setAttribute('download', filename + '.jpg');
   a.href = outputDataURL;
   document.body.appendChild(a);
   a.click();
@@ -37,18 +37,18 @@ export function downloadCanvasImage(canvas, filename) {
  */
 export function drawGridToCanvas(canvas) {
   const context = canvas.getContext("2d");
-
-  const borderColor = document.getElementById('white_border').checked ? '#eeeeee' : '#444444'
-  const gridSize = document.getElementById('3x3').checked ? 3 : 2;
+  const gridMode = document.getElementById('3x3').checked ? 3 : 2;
+  const borderColor = document.getElementById('white_border').checked ? '#eee' : '#444';
+  const gridLineSize = (canvas.width >= 1920 || canvas.height >= 1080) ? 3 : 1;
   context.fillStyle = borderColor;
 
-  if(gridSize === 3) {
-    context.fillRect(Math.round(canvas.width / 3), 0, 1, canvas.height);       // vertical
-    context.fillRect(Math.round(canvas.width / 3 * 2), 0, 1, canvas.height);   // vertical 2
-    context.fillRect(0, Math.round(canvas.height / 3), canvas.width, 1);       // horizontal
-    context.fillRect(0, Math.round(canvas.height / 3 * 2), canvas.width, 1);   // horizontal 2
+  if(gridMode === 3) {
+    context.fillRect(Math.round(canvas.width / 3), 0, gridLineSize, canvas.height);       // vertical
+    context.fillRect(Math.round(canvas.width / 3 * 2), 0, gridLineSize, canvas.height);   // vertical 2
+    context.fillRect(0, Math.round(canvas.height / 3), canvas.width, gridLineSize);       // horizontal
+    context.fillRect(0, Math.round(canvas.height / 3 * 2), canvas.width, gridLineSize);   // horizontal 2
   } else {
-    context.fillRect(Math.round(canvas.width / 2), 0, 1, canvas.height);       // vertical
-    context.fillRect(0, Math.round(canvas.height / 2), canvas.width, 1);       // horizontal
+    context.fillRect(Math.round(canvas.width / 2), 0, gridLineSize, canvas.height);       // vertical
+    context.fillRect(0, Math.round(canvas.height / 2), canvas.width, gridLineSize);       // horizontal
   }
 }
