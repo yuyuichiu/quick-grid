@@ -7,6 +7,16 @@ const rawImage = new Image();
 
 /* Functions */
 
+function exportImage() {
+  // Convert <canvas> to dataURL, then create a temporary <a> to download it  
+  const filename = prompt('Insert filename');
+  if (filename) {
+    drawGridToCanvas(canvas);                // grids are drawn to canvas only on export.
+    downloadCanvasImage(canvas, filename);   // download file
+    updateCanvasBaseImage(canvas, rawImage); // cleanup the grid with completion of export
+  }
+}
+
 function handleImageUpload(event) {
   event.preventDefault();
   if (document.getElementById('file').files.length < 1) { return document.getElementById('file').focus() }
@@ -34,14 +44,12 @@ function toggleGridMode() {
   document.getElementById('3x3').checked ? imageContainer.classList.add('grid9') : imageContainer.classList.remove('grid9');
 }
 
-function exportImage() {
-  // Convert <canvas> to dataURL, then create a temporary <a> to download it  
-  const filename = prompt('Insert filename');
-  if (filename) {
-    drawGridToCanvas(canvas);                // grids are drawn to canvas only on export.
-    downloadCanvasImage(canvas, filename);   // download file
-    updateCanvasBaseImage(canvas, rawImage); // cleanup the grid with completion of export
-  }
+function toggleHorizontalFlip() {
+  document.getElementById('flip-horizontal').checked ? imageContainer.classList.add('horizontal') : imageContainer.classList.remove('horizontal')
+}
+
+function toggleVerticalFlip() {
+  document.getElementById('flip-vertical').checked ? imageContainer.classList.add('vertical') : imageContainer.classList.remove('vertical')
 }
 
 /* --------------------------- */
@@ -52,6 +60,10 @@ document.getElementById('white_border').addEventListener('change', toggleBorderC
 
 document.getElementById('3x3').addEventListener('change', toggleGridMode)
 
+document.getElementById('flip-horizontal').addEventListener('change', toggleHorizontalFlip)
+
+document.getElementById('flip-vertical').addEventListener('change', toggleVerticalFlip)
+
 document.getElementById('upload').addEventListener('submit', handleImageUpload)
 
 document.getElementById('download').addEventListener('click', exportImage)
@@ -61,4 +73,5 @@ document.getElementById('download').addEventListener('click', exportImage)
 /* Initial actions */
 
 resetConfig();
+
 /* --------------------------- */

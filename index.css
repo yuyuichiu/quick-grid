@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(252, 249, 206);
+  background-color: rgb(255, 254, 243);
 }
 
 label { white-space: nowrap; }
@@ -14,7 +14,20 @@ label { white-space: nowrap; }
   max-width: 100%;
   max-height: 100vh;
   user-select: none;
+  transform: rotateY(0deg);
   /* border: 1px solid #444; */
+}
+
+.image-container.horizontal img {
+  transform: rotateY(180deg);
+}
+
+.image-container.vertical img {
+  transform: rotateX(180deg);
+}
+
+.image-container.horizontal.vertical img {
+  transform: rotateX(180deg) rotateY(180deg);
 }
 
 /* Grid line stylings */
