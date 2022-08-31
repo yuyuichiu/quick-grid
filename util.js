@@ -1,13 +1,7 @@
-/** Reset user config to default values */
-export function resetConfig() {
-  document.getElementById('white_border').checked = false;
-  document.getElementById('3x3').checked = false;
-}
-
 /** 
  * Replaces <canvas> image with the dataURL of rawImage variable
  * @param {HTMLCanvasElement} canvas - your canvas element
- * @param {String} newImage - image to replace the canvas
+ * @param {HTMLImage} newImage - image to replace the canvas
  */
 export function updateCanvasBaseImage(canvas, newImage) {
   const context = canvas.getContext("2d");
@@ -51,4 +45,24 @@ export function drawGridToCanvas(canvas) {
     context.fillRect(Math.round(canvas.width / 2), 0, gridLineSize, canvas.height);       // vertical
     context.fillRect(0, Math.round(canvas.height / 2), canvas.width, gridLineSize);       // horizontal
   }
+}
+
+/** Flip canvas content horizontally and/or vertically 
+ * @param {HTMLCanvasElement} canvas - your canvas element
+ * @param {boolean} flipX - whether to flip vertically
+ * @param {boolean} flipY - whether to flip horizontally
+*/
+export function flipCanvas(canvas, flipX, flipY) {
+  if(!canvas || !flipX && !flipY) { return }
+  const context = canvas.getContext("2d");
+
+  const scaleX = flipX ? -1 : 1;                     // Flip context with negative scaling
+  const scaleY = flipY ? -1 : 1;
+  const posX = flipX ? canvas.width * -1 : 0;        // When context is flipped, start position from our end point.
+  const posY = flipY ? canvas.height * -1 : 0;
+
+  context.save();                                                        // save default non-flipped context for later reversion
+  context.scale(scaleX, scaleY);                                         // Flip context with negative scaling
+  context.drawImage(canvas, posX, posY, canvas.width, canvas.height);    // Insert the inversed image into canvas
+  context.restore();                                                     // revert flippped context to default
 }
